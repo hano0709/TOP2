@@ -40,7 +40,13 @@ for(let i=0;i<5;i++){
         console.log("Its a Tie!");
     } else if(win == 0){
         console.log("You Lose, Computer Wins!");
+        compScore++;
     } else {
         console.log("Yow Win!");
+        humanScore++;
     }
+
+    console.log("Score: ");
+    console.log(`Your Score: ${humanScore}`);
+    console.log(`Computer Score: ${compScore}`)
 }
