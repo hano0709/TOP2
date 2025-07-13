@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="scoreboard">
+        <div class="container">
+            <p>Player</p>
+            <div class="player-score">
+                <span id="player-score"></span>
+            </div>
+            <p>vs</p>
+            <p>Computer</p>
+            <div class="comp-score">
+                <span id="comp-score"></span>
+            </div>
+        </div>
+    </div>
+    <div class="playground-container">
+        <div class="playground">
+            <div class="round">
+                <p>Round <span id="round"></span> !</p>
+            </div>
+            <p id="playground-p">Choose Your Element:</p>
+            <div class="rock">
+                <button>Rock</button>
+            </div>
+            <div class="paper">
+                <button>Paper</button>
+            </div>
+            <div class="scissors">
+                <button>Scissors</button>
+            </div>
+            <div class="play">
+                <button>Play</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
