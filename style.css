@@ -59,15 +59,24 @@ body {
     padding: 10px;
 }
 
-.rock, .paper, .scissors {
+.option, #play {
     margin-bottom: 10px;
-    border: 2px, solid, black;
+    border: 2px solid black;
     padding: 10px;
     border-radius: 8px;
+}
+
+#play {
+    margin-top: 30px;
 }
 
 button {
     background-color: transparent;
     border: none;
     font-size: large;
+    cursor: pointer;
+}
+
+.option.clicked {
+    background-color: yellowgreen;
 }

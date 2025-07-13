@@ -1,59 +1,66 @@
-// getComputerChoice = function(){
-//     let num = Math.random();
-//     if(num <= 0.33) return 0;
-//     if(num >0.33 && num <=0.66) return 1;
-//     if(num >0.66) return 2;
-// }
+function getComputerChoice() {
+    let num = Math.random();
+    if(num <= 0.33) return 0;
+    if(num >0.33 && num <=0.66) return 1;
+    if(num >0.66) return 2;
+}
 
-// getHumanChoice = function () {
-//     let choice = prompt("Enter Ur Choice (Rock, Paper, Scissors): ");
-//     choice = choice.toLowerCase();
-//     if(choice == 'rock') return 0;
-//     if(choice == 'paper') return 1;
-//     if(choice == 'scissors') return 2;
-// }
+function playRound (humanChoice, ComputerChoice) {
+    if(humanChoice == ComputerChoice) {
+        return -1;
+    }
 
-// playRound = function (humanChoice, ComputerChoice) {
-//     if(humanChoice == ComputerChoice) {
-//         return -1;
-//     }
+    if((humanChoice == 0 && ComputerChoice == 1) || (humanChoice == 1 && ComputerChoice == 2) || (humanChoice == 2 && ComputerChoice == 0)){
+        return 0;
+    }
 
-//     if((humanChoice == 0 && ComputerChoice == 1) || (humanChoice == 1 && ComputerChoice == 2) || (humanChoice == 2 && ComputerChoice == 0)){
-//         return 0;
-//     }
+    if((humanChoice == 1 && ComputerChoice == 0) || (humanChoice == 2 && ComputerChoice == 1) || (humanChoice == 0 && ComputerChoice == 2)){
+        return 1;
+    }
+}
 
-//     if((humanChoice == 1 && ComputerChoice == 0) || (humanChoice == 2 && ComputerChoice == 1) || (humanChoice == 0 && ComputerChoice == 2)){
-//         return 1;
-//     }
-// }
+let humanChoice = '';
+let computerChoice = -1;
 
-// console.log("Hello, World!");
+let humanScoreN = 0;
+let compScoreN = 0;
 
 let humanScore = document.querySelector("#player-score");
-humanScore.textContent = 0;
+humanScore.textContent = humanScoreN;
 let compScore = document.querySelector("#comp-score");
-compScore.textContent = 0;
+compScore.textContent = compScoreN;
 
-let roundNumber = document.querySelector("#round");
-roundNumber.textContent = 1;
+let roundNumber = 1;
+let round = document.querySelector("#round");
+round.textContent = roundNumber;
 
+const optionBtns = document.querySelectorAll('.option');
 
+optionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
 
-// // for(let i=0;i<5;i++){
-//     let num = getComputerChoice();
-//     let choice = getHumanChoice();
-//     let win = playRound(choice, num);
-//     if(win == -1) {
-//         console.log("Its a Tie!");
-//     } else if(win == 0){
-//         console.log("You Lose, Computer Wins!");
-//         compScore++;
-//     } else {
-//         console.log("Yow Win!");
-//         humanScore++;
-//     }
+        optionBtns.forEach(option => option.classList.remove('clicked'));
+        btn.classList.toggle('clicked');
+        humanChoice = parseInt(btn.id);
+    })
+})
 
-//     console.log("Score: ");
-//     console.log(`Your Score: ${humanScore}`);
-//     console.log(`Computer Score: ${compScore}`)
-// // }
+const playButton = document.querySelector('#play');
+
+playButton.addEventListener('click', () => {
+    computerChoice = getComputerChoice();
+    let win = playRound(humanChoice, computerChoice);
+    roundNumber++;
+    round.textContent = roundNumber;
+    if(win == -1) {
+        console.log("Its a Tie!");
+    } else if(win == 0){
+        console.log("You Lose, Computer Wins!");
+        compScoreN++;
+        compScore.textContent = compScoreN;
+    } else {
+        console.log("Yow Win!");
+        humanScoreN++;
+        humanScore.textContent = humanScoreN;
+    }
+})
